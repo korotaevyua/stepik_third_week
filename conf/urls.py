@@ -20,4 +20,9 @@ import vacancies.views as vacancies_views
 
 urlpatterns = [
     path('', vacancies_views.main_view, name='main'),
+    path('vacancies/', vacancies_views.vacancies_view, name='departure'),
+    path('vacancies/cat/frontend/', vacancies_views.cat_view, name='tour'),
+    path('companies/345/', vacancies_views.companies_view, name='tour'),
+    path('vacancies/22/', vacancies_views.one_vac_view, name='tour'),
+    path('admin/', admin.site.urls),
 ]
