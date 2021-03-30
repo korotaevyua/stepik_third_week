@@ -17,12 +17,16 @@ from django.contrib import admin
 from django.urls import path
 
 import vacancies.views as vacancies_views
+from vacancies.views import custom_handler404, custom_handler500
+
+handler404 = custom_handler404
+handler500 = custom_handler500
 
 urlpatterns = [
     path('', vacancies_views.main_view, name='main'),
-    path('vacancies/', vacancies_views.vacancies_view, name='departure'),
-    path('vacancies/cat/frontend/', vacancies_views.cat_view, name='tour'),
-    path('companies/345/', vacancies_views.companies_view, name='tour'),
-    path('vacancies/22/', vacancies_views.one_vac_view, name='tour'),
+    path('vacancies/', vacancies_views.vacancies_view, name='vacancies'),
+    path('vacancies/cat/<str:category>/', vacancies_views.cat_view, name='category'),
+    path('companies/<int:company_id>/', vacancies_views.companies_view, name='company'),
+    path('vacancies/<int:vacancy_id>/', vacancies_views.one_vac_view, name='vacancy'),
     path('admin/', admin.site.urls),
 ]
